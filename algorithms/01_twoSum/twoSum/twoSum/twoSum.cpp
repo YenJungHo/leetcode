@@ -3,13 +3,15 @@
 #include "stdafx.h"
 #include "gtest/gtest.h"
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
 class CSolution
 {
 public:
-	static vector< int > twoSum( vector< int >& nums, int target ) {
+	// noraml solution
+	static vector< int > twoSum1( vector< int >& nums, int target ) {
 		for ( int i = 0; i < nums.size(); i++ ) {
 			for (int j = i + 1; j < nums.size(); j++) {
 				int sum = nums[ i ] + nums[ j ];
@@ -20,15 +22,48 @@ public:
 		}
 		return{};
 	}
+
+	static vector< int > twoSum2(vector< int >& nums, int target) {
+		int i;
+		unordered_map<int, int> hashMapIndex;
+		for (i = 0; i < nums.size(); i++) {
+			hashMapIndex[nums[i]] = i;
+		}
+
+		for (i = 0; i < nums.size(); i++) {
+			int key = target - nums[i];
+			if (hashMapIndex.count(key) == true && hashMapIndex[key] != i) {
+				return{ i,hashMapIndex[key] };
+			}
+		}
+		
+		return{};
+	}
 };
 
 TEST( TestTwoSum, Test001 )
 {
-	vector<int> vec = { 2, 7, 11, 15 };
+	vector<int> vec = { 1, 7, 11, 15, 8 };
 	int target = 9;
+	bool res = false;
 
-	vector<int> ans = { 0, 1 };
-	bool res = ans == CSolution::twoSum(vec, target);
+	vector<int> ans = { 0, 4 };
+	for (int i = 0; i < 1000; i++) {
+		res = ans == CSolution::twoSum1(vec, target);
+	}
+	EXPECT_TRUE(res);
+}
+
+TEST(TestTwoSum, Test002)
+{
+	vector<int> vec = { 1, 7, 11, 15, 8 };
+	int target = 9;
+	bool res = false;
+
+	vector<int> ans = { 0, 4 };
+	for (int i = 0; i < 1000; i++) {
+		res = ans == CSolution::twoSum2(vec, target);
+	}
 	EXPECT_TRUE(res);
 }
 
