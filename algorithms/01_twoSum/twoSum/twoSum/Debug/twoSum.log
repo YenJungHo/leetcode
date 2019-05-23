@@ -1,0 +1,6 @@
+﻿  twoSum.cpp
+d:\leetcode\algorithms\01_twosum\twosum\twosum\twosum.cpp(13): warning C4018: '<': signed/unsigned mismatch
+d:\leetcode\algorithms\01_twosum\twosum\twosum\twosum.cpp(14): warning C4018: '<': signed/unsigned mismatch
+gtestd.lib(gtest-all.obj) : warning LNK4099: PDB 'gtest.pdb' was not found with 'gtestd.lib(gtest-all.obj)' or at 'D:\leetcode\algorithms\01_twoSum\twoSum\Debug\gtest.pdb'; linking object as if no debug info
+  twoSum.vcxproj -> D:\leetcode\algorithms\01_twoSum\twoSum\Debug\twoSum.exe
+  twoSum.vcxproj -> D:\leetcode\algorithms\01_twoSum\twoSum\Debug\twoSum.pdb (Full PDB)
